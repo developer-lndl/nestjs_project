@@ -6,13 +6,21 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
-export class User {
+@Entity({
+  name: 'profiles',
+})
+export class Profile {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ type: 'varchar', length: 255 })
   name: string;
+
+  @Column({ type: 'varchar', length: 255, name: 'last_name' })
+  lastName: string;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  avatar: string;
 
   @CreateDateColumn({
     type: 'timestamptz',
